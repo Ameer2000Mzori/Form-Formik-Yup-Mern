@@ -1,7 +1,12 @@
 import React from 'react'
+import { StyledForm, StyledFormWrap } from './hooks/StyledComponents.jsx'
 
 const Form = () => {
-  return <div>Form</div>
+  return (
+    <StyledFormWrap>
+      <StyledForm></StyledForm>
+    </StyledFormWrap>
+  )
 }
 
 export default Form
