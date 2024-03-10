@@ -12,10 +12,29 @@ import {
 } from './hooks/StyledComponents.jsx'
 
 const validationSchema = Yup.object().shape({
-  newtodo: Yup.string()
+  firstname: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
+  lastname: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  phonenumber: Yup.number()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  age: Yup.number()
+    .min(0, 'Too Short!')
+    .max(100, 'Too Long!')
+    .required('Required'),
+  gender: Yup.string().required('Required'),
+  country: Yup.string().required('Required'),
+  city: Yup.string().required('Required'),
 })
 
 const Form = () => {
@@ -24,8 +43,8 @@ const Form = () => {
       firstname: '',
       lastname: '',
       email: '',
-      phonenumber: '',
-      age: '',
+      phonenumber: 0,
+      age: 0,
       gender: '',
       country: '',
       city: '',
@@ -46,7 +65,7 @@ const Form = () => {
         }}
       >
         <StyledInputsWrap>
-          <StyledLabel for="firstname">firstname</StyledLabel>
+          <StyledLabel htmlFor="firstname">firstname</StyledLabel>
           <StyledInput
             type="text"
             name="firstname"
@@ -58,7 +77,7 @@ const Form = () => {
         </StyledInputsWrap>
 
         <StyledInputsWrap>
-          <StyledLabel for="lastname">lastname</StyledLabel>
+          <StyledLabel htmlFor="lastname">lastname</StyledLabel>
           <StyledInput
             type="text"
             name="lastname"
@@ -70,7 +89,7 @@ const Form = () => {
         </StyledInputsWrap>
 
         <StyledInputsWrap>
-          <StyledLabel for="email">email</StyledLabel>
+          <StyledLabel htmlFor="email">email</StyledLabel>
           <StyledInput
             type="email"
             name="email"
@@ -82,7 +101,7 @@ const Form = () => {
         </StyledInputsWrap>
 
         <StyledInputsWrap>
-          <StyledLabel for="phonenumber">number</StyledLabel>
+          <StyledLabel htmlFor="phonenumber">number</StyledLabel>
           <StyledInput
             type="number"
             name="phonenumber"
@@ -95,7 +114,7 @@ const Form = () => {
 
         <div className="flex flex-row text-center items-center justify-between h-[50px] w-[50%]">
           <div className="flex flex-row text-center items-center gap-2">
-            <StyledLabel for="age">age</StyledLabel>
+            <StyledLabel htmlFor="age">age</StyledLabel>
             <input
               type="number"
               min={0}
@@ -109,7 +128,7 @@ const Form = () => {
             />
           </div>
           <div className="flex flex-row text-center items-center gap-2">
-            <StyledLabel for="gender"> gender</StyledLabel>
+            <StyledLabel htmlFor="gender"> gender</StyledLabel>
             <select
               id="gender"
               name="gender"
@@ -124,7 +143,7 @@ const Form = () => {
         </div>
 
         <StyledInputsWrap>
-          <StyledLabel for="country">Country</StyledLabel>
+          <StyledLabel htmlFor="country">Country</StyledLabel>
           <StyledInput
             type="text"
             name="country"
@@ -136,7 +155,7 @@ const Form = () => {
         </StyledInputsWrap>
 
         <StyledInputsWrap>
-          <StyledLabel for="city">City</StyledLabel>
+          <StyledLabel htmlFor="city">City</StyledLabel>
           <StyledInput
             type="text"
             name="city"
@@ -148,7 +167,7 @@ const Form = () => {
         </StyledInputsWrap>
 
         <StyledInputsTextAreaWrap>
-          <StyledLabel for="textarea">message...</StyledLabel>
+          <StyledLabel htmlFor="textarea">message...</StyledLabel>
           <StyledTextArea
             name="textarea"
             id="textarea"
