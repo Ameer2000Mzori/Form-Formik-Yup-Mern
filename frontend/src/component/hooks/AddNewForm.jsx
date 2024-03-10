@@ -1,23 +1,16 @@
-import { QueryClient } from '@tanstack/react-query'
-import axios from 'axios'
-const AddNewForm = () => {
-  const queryClient = new QueryClient()
+// import { useMutation, QueryClient } from '@tanstack/react-query'
+// import axios from 'axios'
 
-  const addForm = queryClient({
-    queryKey: ['message'],
-    queryfn: (firstname, lastname, age, gender, country, city, message) =>
-      axios.post('/postform', {
-        firstname,
-        lastname,
-        age,
-        gender,
-        country,
-        city,
-        message,
-      }),
-  })
+// const queryClient = new QueryClient()
 
-  return addForm
-}
+// const AddNewForm = () => {
+//   const addForm = useMutation((values) => axios.post('/postform', values), {
+//     onSuccess: () => {
+//       queryClient.invalidateQueries('message')
+//     },
+//   })
 
-export default AddNewForm
+//   return addForm
+// }
+
+// export default AddNewForm
