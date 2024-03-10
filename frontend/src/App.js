@@ -1,6 +1,6 @@
-import react from 'react'
+import Form from './component/Form.jsx'
 function App() {
-  return <h1>Hello World</h1>
+  return <Form />
 }
 
 export default App
