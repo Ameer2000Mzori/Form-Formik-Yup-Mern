@@ -23,11 +23,9 @@ Router.get('/forms', (req, res) => {
   res.send(formData)
 })
 
-Router.post('/postform', (req, res) => {
+Router.post('/postform/', (req, res) => {
   const { firstname, lastname, age, gender, country, city, message } = req.body
-  console.log(firstname, lastname, age, gender, country, message)
-
-  const newForm = {
+  console.log('Values added:', {
     firstname,
     lastname,
     age,
@@ -35,14 +33,25 @@ Router.post('/postform', (req, res) => {
     country,
     city,
     message,
-    id: uniqid(),
-  }
+  })
 
-  formData.unshift(newForm)
-  res.status(200).send('form sent successfully')
+  // const newForm = {
+  //   firstname,
+  //   lastname,
+  //   age,
+  //   gender,
+  //   country,
+  //   city,
+  //   message,
+  //   id: uniqid(),
+  // }
+
+  // formData.unshift(newForm)
+  // res.status(200).send('form sent successfully')
   console.log(
     `data we got : ${firstname}, ${lastname}, ${age}, ${gender}, ${country}, ${city}, ${message}`
   )
+  res.status(200).send('Form submitted successfully.')
 })
 
 // server listening

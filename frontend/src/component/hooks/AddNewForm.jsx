@@ -1,16 +1,18 @@
-// import { useMutation, QueryClient } from '@tanstack/react-query'
-// import axios from 'axios'
+// AddNewForm.jsx
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
-// const queryClient = new QueryClient()
+const AddNewForm = () => {
+  const addNewForm = useMutation((values) => axios.post(`/postform`, values), {
+    onSuccess: () => {
+      console.log('Todo updated successfully')
+    },
+    onError: (error) => {
+      console.error('There was an error', error)
+    },
+  })
 
-// const AddNewForm = () => {
-//   const addForm = useMutation((values) => axios.post('/postform', values), {
-//     onSuccess: () => {
-//       queryClient.invalidateQueries('message')
-//     },
-//   })
+  return addNewForm
+}
 
-//   return addForm
-// }
-
-// export default AddNewForm
+export default AddNewForm

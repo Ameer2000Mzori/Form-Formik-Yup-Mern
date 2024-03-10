@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import { validationSchema } from './hooks/validationSchema.js'
-// import AddNewForm from './hooks/AddNewForm.jsx'
+import AddNewForm from './hooks/AddNewForm.jsx'
 import {
   StyledForm,
   StyledFormWrap,
@@ -14,7 +14,7 @@ import {
 } from './hooks/StyledComponents.jsx'
 
 const Form = () => {
-  //   const { mutate: newAddNewfrom } = AddNewForm()
+  const { mutate: newFormsNeedAdd } = AddNewForm()
 
   const formik = useFormik({
     initialValues: {
@@ -31,7 +31,7 @@ const Form = () => {
 
     onSubmit: (values, { resetForm }) => {
       console.log('this is the values', values)
-      //   newAddNewfrom(values)
+      newFormsNeedAdd(values)
       resetForm()
     },
     validationSchema: validationSchema,
