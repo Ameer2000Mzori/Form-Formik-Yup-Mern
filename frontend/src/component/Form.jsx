@@ -9,6 +9,7 @@ import {
   StyledInput,
   StyledTextArea,
   StyledInputsTextAreaWrap,
+  StyledErrorMessage,
 } from './hooks/StyledComponents.jsx'
 
 const validationSchema = Yup.object().shape({
@@ -46,9 +47,11 @@ const Form = () => {
       textarea: '',
     },
 
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       console.log('this is the values')
       console.log('this is the values', values)
+
+      resetForm()
     },
     validationSchema: validationSchema,
   })
@@ -71,7 +74,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.firstname}
           />
-          <p>{formik.errors.firstname}</p>
+          <StyledErrorMessage>{formik.errors.firstname}</StyledErrorMessage>
         </StyledInputsWrap>
 
         <StyledInputsWrap>
@@ -84,7 +87,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.lastname}
           />
-          <p>{formik.errors.lastname}</p>
+          <StyledErrorMessage>{formik.errors.lastname}</StyledErrorMessage>
         </StyledInputsWrap>
 
         <StyledInputsWrap>
@@ -97,7 +100,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          <p>{formik.errors.email}</p>
+          <StyledErrorMessage>{formik.errors.email}</StyledErrorMessage>
         </StyledInputsWrap>
 
         <StyledInputsWrap>
@@ -110,7 +113,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.phonenumber}
           />
-          <p>{formik.errors.number}</p>
+          <StyledErrorMessage>{formik.errors.number}</StyledErrorMessage>
         </StyledInputsWrap>
 
         <div className="flex flex-row text-center items-center justify-between h-[50px] w-[50%]">
@@ -125,7 +128,7 @@ const Form = () => {
               onBlur={formik.handleBlur}
               value={formik.values.age}
             />
-            <p>{formik.errors.age}</p>
+            <StyledErrorMessage>{formik.errors.age}</StyledErrorMessage>
           </div>
           <div className="flex flex-row text-center items-center gap-2">
             <StyledLabel htmlFor="gender"> gender</StyledLabel>
@@ -139,7 +142,7 @@ const Form = () => {
               <option value="male">male</option>
               <option value="female">female</option>
             </select>
-            <p>{formik.errors.gender}</p>
+            <StyledErrorMessage>{formik.errors.gender}</StyledErrorMessage>
           </div>
         </div>
 
@@ -153,7 +156,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.country}
           />
-          <p>{formik.errors.country}</p>
+          <StyledErrorMessage>{formik.errors.country}</StyledErrorMessage>
         </StyledInputsWrap>
 
         <StyledInputsWrap>
@@ -166,7 +169,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.city}
           />
-          <p>{formik.errors.city}</p>
+          <StyledErrorMessage>{formik.errors.city}</StyledErrorMessage>
         </StyledInputsWrap>
 
         <StyledInputsTextAreaWrap>
@@ -180,7 +183,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.textarea}
           ></StyledTextArea>
-          <p>{formik.errors.textarea}</p>
+          <StyledErrorMessage>{formik.errors.textarea}</StyledErrorMessage>
         </StyledInputsTextAreaWrap>
 
         <button

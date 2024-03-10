@@ -54,3 +54,9 @@ export const StyledInputsTextAreaWrap = styled.div`
   width: 50%;
   height: 100px;
 `
+
+export const StyledErrorMessage = styled.p`
+  color: red;
+  font-size: 10px;
+  font-weight: 600;
+`
