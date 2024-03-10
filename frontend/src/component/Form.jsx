@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import { validationSchema } from './hooks/validationSchema.js'
-
+import { AddNewForm } from './hooks/AddNewForm.jsx'
 import {
   StyledForm,
   StyledFormWrap,
