@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import { validationSchema } from './hooks/validationSchema.js'
-import { AddNewForm } from './hooks/AddNewForm.jsx'
+import AddNewForm from './hooks/AddNewForm.jsx'
 import {
   StyledForm,
   StyledFormWrap,
@@ -14,6 +14,8 @@ import {
 } from './hooks/StyledComponents.jsx'
 
 const Form = () => {
+  const { mutate: addNewFormRequest } = AddNewForm()
+
   const formik = useFormik({
     initialValues: {
       firstname: '',
@@ -30,7 +32,29 @@ const Form = () => {
     onSubmit: (values, { resetForm }) => {
       console.log('this is the values')
       console.log('this is the values', values)
+      const {
+        firstname,
+        lastname,
+        email,
+        phonenumber,
+        age,
+        gender,
+        country,
+        city,
+        textarea,
+      } = values
 
+      addNewFormRequest(
+        firstname,
+        lastname,
+        email,
+        phonenumber,
+        age,
+        gender,
+        country,
+        city,
+        textarea
+      )
       resetForm()
     },
     validationSchema: validationSchema,
