@@ -1,4 +1,5 @@
 import React from 'react'
+import { useFormik } from 'formik'
 import {
   StyledForm,
   StyledFormWrap,
@@ -9,6 +10,35 @@ import {
   StyledInputsTextAreaWrap,
 } from './hooks/StyledComponents.jsx'
 
+// const formik = new useFormik({
+//   initialValues: {
+//     firstname: '',
+//     lastname: '',
+//     age: '',
+//     gender: '',
+//     country: '',
+//     city: '',
+//     message: '',
+//   },
+//   validationSchema: {
+//     name: {
+//       required: true,
+//     },
+//     email: {
+//       required: true,
+//     },
+//     message: {
+//       required: true,
+//     },
+//   },
+//   onSubmit: (values, { setSubmitting }) => {
+//     setTimeout(() => {
+//       alert(JSON.stringify(values, null, 2))
+//       setSubmitting(false)
+//     }, 400)
+//   },
+// })
+
 const Form = () => {
   return (
     <StyledFormWrap>
@@ -17,10 +47,22 @@ const Form = () => {
           <StyledLabel for="firstname">firstname</StyledLabel>
           <StyledInput type="text" name="firstname" id="firstname" />
         </StyledInputsWrap>
+
         <StyledInputsWrap>
           <StyledLabel for="lastname">lastname</StyledLabel>
           <StyledInput type="text" name="lastname" id="lastname" />
         </StyledInputsWrap>
+
+        <StyledInputsWrap>
+          <StyledLabel for="email">email</StyledLabel>
+          <StyledInput type="email" name="email" id="email" />
+        </StyledInputsWrap>
+
+        <StyledInputsWrap>
+          <StyledLabel for="phonenumber">number</StyledLabel>
+          <StyledInput type="number" name="phonenumber" id="phonenumber" />
+        </StyledInputsWrap>
+
         <div className="flex flex-row text-center items-center justify-between h-[50px] w-[50%]">
           <div className="flex flex-row text-center items-center gap-2">
             <StyledLabel for="age">age</StyledLabel>
@@ -41,6 +83,7 @@ const Form = () => {
             </select>
           </div>
         </div>
+
         <StyledInputsWrap>
           <StyledLabel for="country">Country</StyledLabel>
           <StyledInput type="text" name="country" id="country" />
@@ -48,7 +91,7 @@ const Form = () => {
 
         <StyledInputsWrap>
           <StyledLabel for="city">City</StyledLabel>
-          <StyledInput type="city" name="city" id="city" />
+          <StyledInput type="text" name="city" id="city" />
         </StyledInputsWrap>
 
         <StyledInputsTextAreaWrap>
