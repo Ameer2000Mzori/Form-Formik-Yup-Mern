@@ -20,14 +20,8 @@ const validationSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
-  email: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  phonenumber: Yup.number()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+  email: Yup.string().email('Invalid email address').required('Required'),
+  phonenumber: Yup.string().required('Required'),
   age: Yup.number()
     .min(0, 'Too Short!')
     .max(100, 'Too Long!')
@@ -35,6 +29,7 @@ const validationSchema = Yup.object().shape({
   gender: Yup.string().required('Required'),
   country: Yup.string().required('Required'),
   city: Yup.string().required('Required'),
+  textarea: Yup.string(),
 })
 
 const Form = () => {
@@ -43,15 +38,17 @@ const Form = () => {
       firstname: '',
       lastname: '',
       email: '',
-      phonenumber: 0,
-      age: 0,
-      gender: '',
+      phonenumber: '',
+      age: '18',
+      gender: 'male',
       country: '',
       city: '',
+      textarea: '',
     },
 
     onSubmit: (values) => {
-      console.log(values)
+      console.log('this is the values')
+      console.log('this is the values', values)
     },
     validationSchema: validationSchema,
   })
@@ -74,6 +71,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.firstname}
           />
+          <p>{formik.errors.firstname}</p>
         </StyledInputsWrap>
 
         <StyledInputsWrap>
@@ -86,6 +84,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.lastname}
           />
+          <p>{formik.errors.lastname}</p>
         </StyledInputsWrap>
 
         <StyledInputsWrap>
@@ -98,6 +97,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
+          <p>{formik.errors.email}</p>
         </StyledInputsWrap>
 
         <StyledInputsWrap>
@@ -110,6 +110,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.phonenumber}
           />
+          <p>{formik.errors.number}</p>
         </StyledInputsWrap>
 
         <div className="flex flex-row text-center items-center justify-between h-[50px] w-[50%]">
@@ -117,8 +118,6 @@ const Form = () => {
             <StyledLabel htmlFor="age">age</StyledLabel>
             <input
               type="number"
-              min={0}
-              max={100}
               name="age"
               id="age"
               className="w-[35px]"
@@ -126,6 +125,7 @@ const Form = () => {
               onBlur={formik.handleBlur}
               value={formik.values.age}
             />
+            <p>{formik.errors.age}</p>
           </div>
           <div className="flex flex-row text-center items-center gap-2">
             <StyledLabel htmlFor="gender"> gender</StyledLabel>
@@ -139,6 +139,7 @@ const Form = () => {
               <option value="male">male</option>
               <option value="female">female</option>
             </select>
+            <p>{formik.errors.gender}</p>
           </div>
         </div>
 
@@ -152,6 +153,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.country}
           />
+          <p>{formik.errors.country}</p>
         </StyledInputsWrap>
 
         <StyledInputsWrap>
@@ -164,6 +166,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.city}
           />
+          <p>{formik.errors.city}</p>
         </StyledInputsWrap>
 
         <StyledInputsTextAreaWrap>
@@ -177,6 +180,7 @@ const Form = () => {
             onBlur={formik.handleBlur}
             value={formik.values.textarea}
           ></StyledTextArea>
+          <p>{formik.errors.textarea}</p>
         </StyledInputsTextAreaWrap>
 
         <button
