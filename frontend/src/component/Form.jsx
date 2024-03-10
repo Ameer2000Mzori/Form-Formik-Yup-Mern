@@ -1,5 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import {
   StyledForm,
   StyledFormWrap,
@@ -10,57 +11,86 @@ import {
   StyledInputsTextAreaWrap,
 } from './hooks/StyledComponents.jsx'
 
-// const formik = new useFormik({
-//   initialValues: {
-//     firstname: '',
-//     lastname: '',
-//     age: '',
-//     gender: '',
-//     country: '',
-//     city: '',
-//     message: '',
-//   },
-//   validationSchema: {
-//     name: {
-//       required: true,
-//     },
-//     email: {
-//       required: true,
-//     },
-//     message: {
-//       required: true,
-//     },
-//   },
-//   onSubmit: (values, { setSubmitting }) => {
-//     setTimeout(() => {
-//       alert(JSON.stringify(values, null, 2))
-//       setSubmitting(false)
-//     }, 400)
-//   },
-// })
+const validationSchema = Yup.object().shape({
+  newtodo: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+})
 
 const Form = () => {
+  const formik = useFormik({
+    initialValues: {
+      firstname: '',
+      lastname: '',
+      email: '',
+      phonenumber: '',
+      age: '',
+      gender: '',
+      country: '',
+      city: '',
+    },
+
+    onSubmit: (values) => {
+      console.log(values)
+    },
+    validationSchema: validationSchema,
+  })
+
   return (
     <StyledFormWrap>
-      <StyledForm>
+      <StyledForm
+        onSubmit={(e) => {
+          e.preventDefault()
+          formik.handleSubmit()
+        }}
+      >
         <StyledInputsWrap>
           <StyledLabel for="firstname">firstname</StyledLabel>
-          <StyledInput type="text" name="firstname" id="firstname" />
+          <StyledInput
+            type="text"
+            name="firstname"
+            id="firstname"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.firstname}
+          />
         </StyledInputsWrap>
 
         <StyledInputsWrap>
           <StyledLabel for="lastname">lastname</StyledLabel>
-          <StyledInput type="text" name="lastname" id="lastname" />
+          <StyledInput
+            type="text"
+            name="lastname"
+            id="lastname"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.lastname}
+          />
         </StyledInputsWrap>
 
         <StyledInputsWrap>
           <StyledLabel for="email">email</StyledLabel>
-          <StyledInput type="email" name="email" id="email" />
+          <StyledInput
+            type="email"
+            name="email"
+            id="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
         </StyledInputsWrap>
 
         <StyledInputsWrap>
           <StyledLabel for="phonenumber">number</StyledLabel>
-          <StyledInput type="number" name="phonenumber" id="phonenumber" />
+          <StyledInput
+            type="number"
+            name="phonenumber"
+            id="phonenumber"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.phonenumber}
+          />
         </StyledInputsWrap>
 
         <div className="flex flex-row text-center items-center justify-between h-[50px] w-[50%]">
@@ -73,25 +103,48 @@ const Form = () => {
               name="age"
               id="age"
               className="w-[35px]"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.age}
             />
           </div>
           <div className="flex flex-row text-center items-center gap-2">
-            <StyledLabel for="genderselection"> gender</StyledLabel>
-            <select id="genderselection">
-              <option value="">male</option>
-              <option value="">female</option>
+            <StyledLabel for="gender"> gender</StyledLabel>
+            <select
+              id="gender"
+              name="gender"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.gender}
+            >
+              <option value="male">male</option>
+              <option value="female">female</option>
             </select>
           </div>
         </div>
 
         <StyledInputsWrap>
           <StyledLabel for="country">Country</StyledLabel>
-          <StyledInput type="text" name="country" id="country" />
+          <StyledInput
+            type="text"
+            name="country"
+            id="country"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.country}
+          />
         </StyledInputsWrap>
 
         <StyledInputsWrap>
           <StyledLabel for="city">City</StyledLabel>
-          <StyledInput type="text" name="city" id="city" />
+          <StyledInput
+            type="text"
+            name="city"
+            id="city"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.city}
+          />
         </StyledInputsWrap>
 
         <StyledInputsTextAreaWrap>
@@ -101,10 +154,16 @@ const Form = () => {
             id="textarea"
             cols="30"
             rows="10"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.textarea}
           ></StyledTextArea>
         </StyledInputsTextAreaWrap>
 
-        <button className="w-[120px] h-[30px] rounded-[5px] bg-slate-500 text-white hover:bg-slate-300 active:bg-slate-600">
+        <button
+          type="submit"
+          className="w-[120px] h-[30px] rounded-[5px] bg-slate-500 text-white hover:bg-slate-300 active:bg-slate-600"
+        >
           submit
         </button>
       </StyledForm>
