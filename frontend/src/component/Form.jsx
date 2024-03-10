@@ -41,7 +41,6 @@ const Form = () => {
             </select>
           </div>
         </div>
-
         <StyledInputsWrap>
           <StyledLabel for="country">Country</StyledLabel>
           <StyledInput type="text" name="country" id="country" />
@@ -61,6 +60,10 @@ const Form = () => {
             rows="10"
           ></StyledTextArea>
         </StyledInputsTextAreaWrap>
+
+        <button className="w-[120px] h-[30px] rounded-[5px] bg-slate-500 text-white hover:bg-slate-300 active:bg-slate-600">
+          submit
+        </button>
       </StyledForm>
     </StyledFormWrap>
   )
