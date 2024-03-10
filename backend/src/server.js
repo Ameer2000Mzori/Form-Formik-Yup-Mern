@@ -35,19 +35,18 @@ Router.post('/postform/', (req, res) => {
     message,
   })
 
-  // const newForm = {
-  //   firstname,
-  //   lastname,
-  //   age,
-  //   gender,
-  //   country,
-  //   city,
-  //   message,
-  //   id: uniqid(),
-  // }
+  const newForm = {
+    firstname,
+    lastname,
+    age,
+    gender,
+    country,
+    city,
+    message,
+    id: uniqid(),
+  }
 
-  // formData.unshift(newForm)
-  // res.status(200).send('form sent successfully')
+  formData.unshift(newForm)
   console.log(
     `data we got : ${firstname}, ${lastname}, ${age}, ${gender}, ${country}, ${city}, ${message}`
   )
