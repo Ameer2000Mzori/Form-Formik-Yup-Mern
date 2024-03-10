@@ -30,3 +30,27 @@ export const StyledInputsWrap = styled.div`
   width: 50%;
   height: 50px;
 `
+
+export const StyledLabel = styled.label`
+  font-size: 15px;
+  font-weight: 600;
+`
+export const StyledInput = styled.input`
+  border-radius: 5px;
+  resize: no-resize;
+  border: 1px solid #ccc;
+`
+
+export const StyledTextArea = styled.textarea`
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+  height: 100px;
+`
+
+export const StyledInputsTextAreaWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100px;
+`

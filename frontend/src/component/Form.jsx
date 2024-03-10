@@ -3,6 +3,10 @@ import {
   StyledForm,
   StyledFormWrap,
   StyledInputsWrap,
+  StyledLabel,
+  StyledInput,
+  StyledTextArea,
+  StyledInputsTextAreaWrap,
 } from './hooks/StyledComponents.jsx'
 
 const Form = () => {
@@ -10,16 +14,16 @@ const Form = () => {
     <StyledFormWrap>
       <StyledForm>
         <StyledInputsWrap>
-          <label for="firstname">firstname</label>
-          <input type="text" name="firstname" id="firstname" />
+          <StyledLabel for="firstname">firstname</StyledLabel>
+          <StyledInput type="text" name="firstname" id="firstname" />
         </StyledInputsWrap>
         <StyledInputsWrap>
-          <label for="lastname">lastname</label>
-          <input type="text" name="lastname" id="lastname" />
+          <StyledLabel for="lastname">lastname</StyledLabel>
+          <StyledInput type="text" name="lastname" id="lastname" />
         </StyledInputsWrap>
         <div className="flex flex-row text-center items-center justify-between h-[50px] w-[50%]">
           <div className="flex flex-row text-center items-center gap-2">
-            <label for="age">age</label>
+            <StyledLabel for="age">age</StyledLabel>
             <input
               type="number"
               min={0}
@@ -30,7 +34,7 @@ const Form = () => {
             />
           </div>
           <div className="flex flex-row text-center items-center gap-2">
-            <label for="genderselection"> gender</label>
+            <StyledLabel for="genderselection"> gender</StyledLabel>
             <select id="genderselection">
               <option value="">male</option>
               <option value="">female</option>
@@ -39,24 +43,24 @@ const Form = () => {
         </div>
 
         <StyledInputsWrap>
-          <label for="country">Country</label>
-          <input type="text" name="country" id="country" />
+          <StyledLabel for="country">Country</StyledLabel>
+          <StyledInput type="text" name="country" id="country" />
         </StyledInputsWrap>
 
         <StyledInputsWrap>
-          <label for="city">City</label>
-          <input type="city" name="city" id="city" />
+          <StyledLabel for="city">City</StyledLabel>
+          <StyledInput type="city" name="city" id="city" />
         </StyledInputsWrap>
 
-        <StyledInputsWrap>
-          <label for="textarea">message...</label>
-          <textarea
+        <StyledInputsTextAreaWrap>
+          <StyledLabel for="textarea">message...</StyledLabel>
+          <StyledTextArea
             name="textarea"
             id="textarea"
             cols="30"
             rows="10"
-          ></textarea>
-        </StyledInputsWrap>
+          ></StyledTextArea>
+        </StyledInputsTextAreaWrap>
       </StyledForm>
     </StyledFormWrap>
   )
