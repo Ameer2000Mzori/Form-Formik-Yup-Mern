@@ -1,8 +1,10 @@
 import express from 'express'
 import 'dotenv/config'
 // adding Router
-const Router = express.Router()
 const app = express()
+const Router = express.Router()
+app.use(express.json())
+app.use(Router)
 
 // port
 const PORT = process.env.PORT || 4000
@@ -12,7 +14,7 @@ const formData = []
 
 // requests
 Router.get('/', (req, res) => {
-  res.send('Hello World')
+  res.send('hollo world')
 })
 
 Router.get('/forms', (req, res) => {
