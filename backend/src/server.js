@@ -25,18 +25,10 @@ Router.get('/forms', (req, res) => {
 
 Router.post('/postform', (req, res) => {
   const { firstname, lastname, age, gender, country, city, message } = req.body
-  res
-    .status(200)
-    .send(
-      'data we got : ',
-      firstname,
-      lastname,
-      age,
-      gender,
-      country,
-      city,
-      message
-    )
+  console.log(firstname, lastname, age, gender, country, message)
+  res.send(
+    `data we got : ${firstname}, ${lastname}, ${age}, ${gender}, ${country}, ${city}, ${message}`
+  )
 
   //   firstname,
   //   lastname,
